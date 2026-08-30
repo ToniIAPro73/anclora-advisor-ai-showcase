@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <filter id="panelShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#0B1220" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="800" fill="#F4F6F7"/>
+
+  <!-- sidebar -->
+  <rect x="0" y="0" width="220" height="800" fill="#14201D"/>
+  <text x="24" y="44" font-size="17" font-weight="700" fill="#F1F5F4">Anclora <tspan fill="#1DAB89">Advisor AI</tspan></text>
+
+  <!-- nav items -->
+  <g font-size="13" fill="#9FB5B0">
+    <rect x="12" y="76" width="196" height="38" rx="8" fill="#1DAB89" fill-opacity="0.16"/>
+    <rect x="12" y="80" width="3" height="30" rx="1.5" fill="#1DAB89"/>
+    <text x="36" y="100" fill="#E8F5F1" font-weight="600">Chat</text>
+    <text x="36" y="140">Fiscal</text>
+    <text x="36" y="180">Laboral</text>
+    <text x="36" y="220">Facturación</text>
+    <text x="36" y="260">Alertas</text>
+  </g>
+  <text x="24" y="770" font-size="10" fill="#5E7370">v1.2 · entorno de demostración</text>
+
+  <!-- header -->
+  <rect x="220" y="0" width="1060" height="60" fill="#FFFFFF" stroke="#E2E8E8" stroke-width="1"/>
+  <text x="248" y="37" font-size="15" font-weight="600" fill="#1F2A2E">Chat con tu documentación</text>
+  <circle cx="1208" cy="30" r="16" fill="#1DAB89" fill-opacity="0.18"/>
+  <text x="1208" y="35" text-anchor="middle" font-size="12" font-weight="700" fill="#0F7A62">DU</text>
+  <text x="1184" y="35" text-anchor="end" font-size="12" fill="#4A5A5E">Demo Usuario</text>
+
+  <!-- chat content area -->
+  <g filter="url(#panelShadow)">
+    <rect x="248" y="84" width="984" height="624" rx="12" fill="#FFFFFF" stroke="#E2E8E8" stroke-width="1"/>
+  </g>
+
+  <!-- user message -->
+  <rect x="700" y="112" width="504" height="56" rx="12" fill="#1DAB89"/>
+  <text x="720" y="137" font-size="13" fill="#06231C">¿Puedo deducir los suministros de mi vivienda</text>
+  <text x="720" y="156" font-size="13" fill="#06231C">habitual si trabajo como autónomo desde casa?</text>
+  <text x="1188" y="190" text-anchor="end" font-size="10" fill="#8CA3A0">Demo Usuario · 10:24</text>
+
+  <!-- assistant message -->
+  <circle cx="282" cy="220" r="14" fill="#14201D"/>
+  <text x="282" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="#1DAB89">AI</text>
+  <rect x="308" y="200" width="700" height="118" rx="12" fill="#F4F6F7" stroke="#E2E8E8" stroke-width="1"/>
+  <g font-size="13" fill="#33434A">
+    <text x="328" y="228">Sí, con matices. Si estás en estimación directa y tu vivienda habitual es</text>
+    <text x="328" y="248">también tu centro de actividad, puedes deducir los suministros (agua, luz,</text>
+    <text x="328" y="268">gas, internet) aplicando el 30 % sobre la proporción de metros cuadrados</text>
+    <text x="328" y="288">afectos a la actividad. Conviene documentar la afectación y conservar las</text>
+    <text x="328" y="308">facturas originales por si hubiera un requerimiento.</text>
+  </g>
+
+  <!-- grounding badge -->
+  <rect x="308" y="332" width="132" height="26" rx="13" fill="#1DAB89" fill-opacity="0.12" stroke="#1DAB89" stroke-opacity="0.5" stroke-width="1"/>
+  <circle cx="324" cy="345" r="4" fill="#1DAB89"/>
+  <text x="336" y="349" font-size="11" font-weight="600" fill="#0F7A62">Grounding: alto</text>
+
+  <!-- citation block -->
+  <rect x="308" y="370" width="700" height="84" rx="10" fill="#FBFCFC" stroke="#E2E8E8" stroke-width="1"/>
+  <rect x="308" y="370" width="3" height="84" fill="#1DAB89"/>
+  <text x="328" y="392" font-size="11" font-weight="700" fill="#4A5A5E">FUENTES CONSULTADAS</text>
+  <circle cx="334" cy="412" r="3" fill="#1DAB89"/>
+  <text x="346" y="416" font-size="12" fill="#33434A">Guía fiscal del autónomo — fragmento 12 · similitud 0,87</text>
+  <circle cx="334" cy="438" r="3" fill="#1DAB89"/>
+  <text x="346" y="442" font-size="12" fill="#33434A">Manual de deducibilidad de suministros — fragmento 4 · similitud 0,82</text>
+
+  <!-- suggested action chips -->
+  <rect x="308" y="470" width="146" height="32" rx="16" fill="#FFFFFF" stroke="#1DAB89" stroke-width="1"/>
+  <text x="381" y="490" text-anchor="middle" font-size="12" font-weight="600" fill="#0F7A62">Abrir calculadora</text>
+  <rect x="466" y="470" width="192" height="32" rx="16" fill="#FFFFFF" stroke="#C7D3D1" stroke-width="1"/>
+  <text x="562" y="490" text-anchor="middle" font-size="12" font-weight="600" fill="#4A5A5E">Ver alertas del trimestre</text>
+
+  <!-- input box -->
+  <rect x="276" y="648" width="928" height="44" rx="10" fill="#FFFFFF" stroke="#C7D3D1" stroke-width="1"/>
+  <text x="296" y="675" font-size="13" fill="#9FB5B0">Escribe tu consulta fiscal o laboral…</text>
+  <rect x="1136" y="656" width="56" height="28" rx="8" fill="#1DAB89"/>
+  <text x="1164" y="674" text-anchor="middle" font-size="12" font-weight="600" fill="#06231C">Enviar</text>
+
+  <!-- synthetic caption -->
+  <text x="1264" y="786" text-anchor="end" font-size="10" fill="#8CA3A0">Datos sintéticos — mockup de demostración</text>
+</svg>
