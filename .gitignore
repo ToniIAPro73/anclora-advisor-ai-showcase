@@ -18,3 +18,4 @@ dist/
 build/
 out/
 .next/
+.vercel
