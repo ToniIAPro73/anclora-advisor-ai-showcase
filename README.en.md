@@ -32,7 +32,7 @@
 
 ## Live Demo
 
-`Live demo: pending deployment`
+**[Open live demo → anclora-advisor-ai-showcase.vercel.app](https://anclora-advisor-ai-showcase.vercel.app)**
 
 The interactive demo in this showcase runs locally, with no secrets and no external services:
 
