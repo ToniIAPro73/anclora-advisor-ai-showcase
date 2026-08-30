@@ -30,6 +30,18 @@
 
 ---
 
+## Live Demo
+
+`Live demo: pending deployment`
+
+La demo interactiva de este showcase se ejecuta en local, sin secretos ni servicios externos:
+
+```bash
+npm install && npm run dev
+```
+
+Detalles de su arquitectura en [docs/demo-architecture.md](docs/demo-architecture.md).
+
 ## El problema
 
 Autónomos y pequeñas empresas en España manejan a diario obligaciones fiscales, riesgo laboral y facturación con información dispersa entre normativa, contratos y documentos propios. Consultar esa información exige tiempo, criterio experto y una trazabilidad que las herramientas genéricas de chat no ofrecen: una respuesta sin fuente citable no sirve para decidir.
@@ -87,15 +99,15 @@ Más detalle en [docs/architecture.md](docs/architecture.md).
 
 ## Capturas (datos sintéticos)
 
-| Chat con citas RAG | Facturación |
+| Panel principal | Consulta con respuesta simulada |
 |---|---|
-| ![Chat con respuesta citada](assets/screenshots/02-chat-rag.svg) | ![Panel de facturación](assets/screenshots/03-invoicing.svg) |
+| ![Panel principal con documentos sintéticos](assets/screenshots/01-dashboard.png) | ![Consulta con respuesta simulada](assets/screenshots/02-consultation.png) |
 
-| Riesgo laboral | Acceso |
+| Fuentes y grounding | Riesgos y trazabilidad |
 |---|---|
-| ![Panel de riesgo laboral](assets/screenshots/04-labor-risk.svg) | ![Pantalla de acceso](assets/screenshots/01-login.svg) |
+| ![Citas con nivel de grounding](assets/screenshots/03-sources.png) | ![Riesgos, recomendación y registro de actividad](assets/screenshots/04-risk.png) |
 
-Las capturas son maquetas recreadas con datos ficticios; no proceden del entorno operativo.
+Las capturas proceden de la demo interactiva de este repositorio ejecutándose con datos ficticios (`npm install && npm run dev`).
 
 ## Capacidades de IA
 
@@ -135,6 +147,7 @@ Este proyecto demuestra experiencia práctica en:
 
 - [docs/product-overview.md](docs/product-overview.md) — problema, usuario y propuesta de valor
 - [docs/architecture.md](docs/architecture.md) — arquitectura de alto nivel
+- [docs/demo-architecture.md](docs/demo-architecture.md) — arquitectura de la demo interactiva (datos sintéticos)
 - [docs/ai-capabilities.md](docs/ai-capabilities.md) — RAG, embeddings, LLM y procesamiento documental
 - [docs/engineering-decisions.md](docs/engineering-decisions.md) — decisiones de ingeniería
 - [docs/security-and-privacy.md](docs/security-and-privacy.md) — principios de seguridad y privacidad

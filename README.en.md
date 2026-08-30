@@ -30,6 +30,18 @@
 
 ---
 
+## Live Demo
+
+`Live demo: pending deployment`
+
+The interactive demo in this showcase runs locally, with no secrets and no external services:
+
+```bash
+npm install && npm run dev
+```
+
+Architecture details in [docs/demo-architecture.md](docs/demo-architecture.md).
+
 ## The problem
 
 Freelancers and small businesses in Spain deal daily with tax obligations, labor risk and invoicing, using information scattered across regulations, contracts and their own documents. Finding reliable answers takes time and expert judgment — and generic chat tools don't provide the traceability decisions require: an answer without a citable source is not actionable.
@@ -87,15 +99,15 @@ More detail in [docs/architecture.md](docs/architecture.md).
 
 ## Screenshots (synthetic data)
 
-| Cited RAG chat | Invoicing |
+| Main dashboard | Consultation with simulated answer |
 |---|---|
-| ![Chat with cited answer](assets/screenshots/02-chat-rag.svg) | ![Invoicing panel](assets/screenshots/03-invoicing.svg) |
+| ![Main dashboard with synthetic documents](assets/screenshots/01-dashboard.png) | ![Consultation with simulated answer](assets/screenshots/02-consultation.png) |
 
-| Labor risk | Sign in |
+| Sources and grounding | Risks and traceability |
 |---|---|
-| ![Labor risk panel](assets/screenshots/04-labor-risk.svg) | ![Sign-in screen](assets/screenshots/01-login.svg) |
+| ![Citations with grounding level](assets/screenshots/03-sources.png) | ![Risks, recommendation and activity log](assets/screenshots/04-risk.png) |
 
-The screenshots are mockups recreated with fictional data; they do not come from the operational environment.
+The screenshots come from this repository's interactive demo running fictional data (`npm install && npm run dev`).
 
 ## AI capabilities
 
@@ -135,6 +147,7 @@ This project demonstrates hands-on experience in:
 
 - [docs/product-overview.md](docs/product-overview.md) — problem, target user and value proposition
 - [docs/architecture.md](docs/architecture.md) — high-level architecture
+- [docs/demo-architecture.md](docs/demo-architecture.md) — interactive demo architecture (synthetic data)
 - [docs/ai-capabilities.md](docs/ai-capabilities.md) — RAG, embeddings, LLM and document processing
 - [docs/engineering-decisions.md](docs/engineering-decisions.md) — engineering decisions
 - [docs/security-and-privacy.md](docs/security-and-privacy.md) — security and privacy principles

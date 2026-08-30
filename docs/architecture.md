@@ -98,3 +98,4 @@ Una tarea programada (cron) invoca periódicamente una cola interna de operacion
 - [ai-capabilities.md](ai-capabilities.md) — detalle de la capa de IA
 - [engineering-decisions.md](engineering-decisions.md) — por qué se decidió así
 - [security-and-privacy.md](security-and-privacy.md) — control de acceso y privacidad
+- [demo-architecture.md](demo-architecture.md) — demo interactiva de este repo (Vite + React, datos sintéticos, sin IA real)
