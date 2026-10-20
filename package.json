@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Demo interactiva de portfolio con datos sintéticos — Anclora Advisor AI",
   "scripts": {
-    "dev": "vite",
+    "dev": "node ../anclora-infrastructure/scripts/free-port.mjs && vite --port 3038 --strictPort",
     "build": "vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
