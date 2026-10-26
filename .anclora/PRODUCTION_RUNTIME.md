@@ -53,25 +53,32 @@ ANCLORA_FLOW_VERSION=1
 GIT_WORKFLOW_MODEL=FULL_PROMOTION
 REPO_PROFILE=FULL_APPLICATION
 RUNTIME_CONTRACT_AUTHORITY=CANONICAL
-STATUS=NO_PRODUCTION_RUNTIME
-REASON=Static landing/showcase repository. Static assets only.
+STATUS=STATIC_PRODUCTION_RUNTIME
+REASON=Static Vite showcase, served from Vercel in production and mirrored to a Cloudflare development preview.
 
 ## 1. Application Identity
 
 APPLICATION_NAME=Anclora Advisor Ai Showcase
 REPOSITORY=anclora-advisor-ai-showcase
-APPLICATION_TYPE=governance_or_static_library
+APPLICATION_TYPE=frontend
 FRAMEWORK=Vite + React
 
 ## 2. Runtime Topology
 
-FRONTEND_PROVIDER=NONE
+FRONTEND_PROVIDER=Vercel
 BACKEND_PROVIDER=NONE
-PRODUCTION_DOMAIN=NONE
-PRODUCTION_DEPLOYMENT_PROVIDER=NONE
+CLOUDFLARE_PREVIEW_PROVIDER=Cloudflare Workers Static Assets
+CLOUDFLARE_PREVIEW_BRANCH=development
+CLOUDFLARE_PREVIEW_WORKER=anclora-advisor-ai-showcase-development
+CLOUDFLARE_PREVIEW_HOST=workers.dev
+PRODUCTION_DOMAIN=anclora-advisor-ai-showcase.vercel.app
+PRODUCTION_DEPLOYMENT_PROVIDER=Vercel
+CLOUDFLARE_PRODUCTION_CUTOVER=NOT_AUTHORIZED
+PRODUCTION_DNS_CHANGE=NONE
 
-This repository does not deploy an independent production backend or production-backed application runtime.
-It serves as governance, library, static documentation, or showcase.
+The production static showcase remains on Vercel. A separate Cloudflare Workers Static Assets
+deployment is enabled only for the `development` branch as a preview on `workers.dev`. It has
+no custom domain and does not alter Vercel, production DNS, application data, or external APIs.
 
 ## 3. Production Database Contract
 
@@ -92,6 +99,7 @@ MIGRATION_RUNNER=NONE
 
 STORAGE_PROVIDER=NONE
 STORAGE_SCOPE=NONE
+STATIC_ASSET_DELIVERY=Vercel Edge CDN (production); Cloudflare Workers Static Assets (development preview)
 
 ## 6. Authentication Contract
 

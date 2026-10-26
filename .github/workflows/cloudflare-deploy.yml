@@ -1,0 +1,44 @@
+name: Cloudflare development preview
+
+on:
+  push:
+    branches: [development]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-development-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  deploy-development:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact commit
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build static assets
+        run: npm run build
+
+      - name: Deploy Cloudflare development preview
+        run: npx --yes wrangler@4.147.0 deploy --env development
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
