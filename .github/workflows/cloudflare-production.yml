@@ -1,4 +1,4 @@
-name: Cloudflare production mirror
+name: Cloudflare production deployment
 
 on:
   workflow_dispatch:
@@ -73,3 +73,18 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Verify production hostname
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent --show-error https://advisor-showcase.anclora.com/ -o /dev/null; then
+              echo "Cloudflare production hostname returned HTTP 200."
+              exit 0
+            fi
+            echo "Waiting for Cloudflare custom-domain activation ($attempt/30)..."
+            sleep 10
+          done
+          echo "::error::Production hostname did not become healthy within five minutes."
+          exit 1

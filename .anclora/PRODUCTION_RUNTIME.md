@@ -53,8 +53,8 @@ ANCLORA_FLOW_VERSION=1
 GIT_WORKFLOW_MODEL=FULL_PROMOTION
 REPO_PROFILE=FULL_APPLICATION
 RUNTIME_CONTRACT_AUTHORITY=CANONICAL
-STATUS=STATIC_PRODUCTION_RUNTIME
-REASON=Static Vite showcase, served from Vercel in production and mirrored to a Cloudflare development preview.
+STATUS=PRODUCTION_MIGRATION_IN_PROGRESS
+REASON=Static Vite showcase migrating its canonical production deployment from Vercel to Cloudflare Workers Static Assets.
 
 ## 1. Application Identity
 
@@ -65,25 +65,27 @@ FRAMEWORK=Vite + React
 
 ## 2. Runtime Topology
 
-FRONTEND_PROVIDER=Vercel
+FRONTEND_PROVIDER=Cloudflare Workers Static Assets
 BACKEND_PROVIDER=NONE
 CLOUDFLARE_PREVIEW_PROVIDER=Cloudflare Workers Static Assets
 CLOUDFLARE_PREVIEW_BRANCH=development
 CLOUDFLARE_PREVIEW_WORKER=anclora-advisor-ai-showcase-development
 CLOUDFLARE_PREVIEW_HOST=workers.dev
-PRODUCTION_DOMAIN=anclora-advisor-ai-showcase.vercel.app
-PRODUCTION_DEPLOYMENT_PROVIDER=Vercel
-CLOUDFLARE_PRODUCTION_MIRROR_PROVIDER=Cloudflare Workers Static Assets
-CLOUDFLARE_PRODUCTION_MIRROR_BRANCH=production
-CLOUDFLARE_PRODUCTION_MIRROR_WORKER=anclora-advisor-ai-showcase
-CLOUDFLARE_PRODUCTION_MIRROR_HOST=workers.dev
-CLOUDFLARE_PRODUCTION_CUTOVER=NOT_AUTHORIZED
-PRODUCTION_DNS_CHANGE=NONE
+PRODUCTION_DOMAIN=advisor-showcase.anclora.com
+PRODUCTION_DEPLOYMENT_PROVIDER=Cloudflare Workers Static Assets
+CLOUDFLARE_PRODUCTION_WORKER=anclora-advisor-ai-showcase
+CLOUDFLARE_PRODUCTION_BRANCH=production
+CLOUDFLARE_PRODUCTION_HOST=advisor-showcase.anclora.com
+CLOUDFLARE_PRODUCTION_STATUS=PENDING_PROMOTION_AND_DEPLOYMENT
+VERCEL_GIT_DEPLOYMENTS=DISABLED
+VERCEL_PROJECT_PAUSE=AFTER_CLOUDFLARE_CUTOVER_VERIFICATION
+PRODUCTION_DNS_CHANGE=CREATE advisor-showcase.anclora.com as a Cloudflare Worker Custom Domain
 
-The production static showcase remains on Vercel. Cloudflare Workers Static Assets serves the
-`development` preview and an additive production mirror from the `production` branch on
-`workers.dev`. Vercel remains the canonical production host. The Cloudflare mirror has no custom
-domain and does not alter Vercel, production DNS, application data, or external APIs.
+The production static showcase is being moved to Cloudflare Workers Static Assets. The production
+Worker will serve `advisor-showcase.anclora.com`; the development preview remains on its dedicated
+`workers.dev` hostname. Vercel Git deployments are disabled, and the Vercel project will be paused
+after Cloudflare production is verified. The current Vercel URL is not the canonical URL after
+cutover.
 
 ## 3. Production Database Contract
 
@@ -104,7 +106,7 @@ MIGRATION_RUNNER=NONE
 
 STORAGE_PROVIDER=NONE
 STORAGE_SCOPE=NONE
-STATIC_ASSET_DELIVERY=Vercel Edge CDN (canonical production); Cloudflare Workers Static Assets (production mirror and development preview)
+STATIC_ASSET_DELIVERY=Cloudflare Workers Static Assets (canonical production; production and development)
 
 ## 6. Authentication Contract
 
