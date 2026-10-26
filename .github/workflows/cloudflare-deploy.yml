@@ -3,6 +3,12 @@ name: Cloudflare development preview
 on:
   push:
     branches: [development]
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: "Exact development SHA to preview"
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -18,6 +24,29 @@ jobs:
     steps:
       - name: Checkout exact commit
         uses: actions/checkout@v4
+
+      - name: Verify explicitly dispatched SHA
+        if: github.event_name == 'workflow_dispatch'
+        shell: bash
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]] || [[ "$SOURCE_SHA" != "$GITHUB_SHA" ]]; then
+            echo "::error::Dispatched SHA must exactly match the development ref checkout."
+            exit 1
+          fi
+
+      - name: Verify Cloudflare credentials
+        shell: bash
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [[ -z "$CLOUDFLARE_API_TOKEN" || -z "$CLOUDFLARE_ACCOUNT_ID" ]]; then
+            echo "::error::Configure CLOUDFLARE_API_TOKEN (Actions secret) and CLOUDFLARE_ACCOUNT_ID (Actions variable) for this repository."
+            exit 1
+          fi
 
       - name: Setup Node
         uses: actions/setup-node@v4
