@@ -73,12 +73,17 @@ CLOUDFLARE_PREVIEW_WORKER=anclora-advisor-ai-showcase-development
 CLOUDFLARE_PREVIEW_HOST=workers.dev
 PRODUCTION_DOMAIN=anclora-advisor-ai-showcase.vercel.app
 PRODUCTION_DEPLOYMENT_PROVIDER=Vercel
+CLOUDFLARE_PRODUCTION_MIRROR_PROVIDER=Cloudflare Workers Static Assets
+CLOUDFLARE_PRODUCTION_MIRROR_BRANCH=production
+CLOUDFLARE_PRODUCTION_MIRROR_WORKER=anclora-advisor-ai-showcase
+CLOUDFLARE_PRODUCTION_MIRROR_HOST=workers.dev
 CLOUDFLARE_PRODUCTION_CUTOVER=NOT_AUTHORIZED
 PRODUCTION_DNS_CHANGE=NONE
 
-The production static showcase remains on Vercel. A separate Cloudflare Workers Static Assets
-deployment is enabled only for the `development` branch as a preview on `workers.dev`. It has
-no custom domain and does not alter Vercel, production DNS, application data, or external APIs.
+The production static showcase remains on Vercel. Cloudflare Workers Static Assets serves the
+`development` preview and an additive production mirror from the `production` branch on
+`workers.dev`. Vercel remains the canonical production host. The Cloudflare mirror has no custom
+domain and does not alter Vercel, production DNS, application data, or external APIs.
 
 ## 3. Production Database Contract
 
@@ -99,7 +104,7 @@ MIGRATION_RUNNER=NONE
 
 STORAGE_PROVIDER=NONE
 STORAGE_SCOPE=NONE
-STATIC_ASSET_DELIVERY=Vercel Edge CDN (production); Cloudflare Workers Static Assets (development preview)
+STATIC_ASSET_DELIVERY=Vercel Edge CDN (canonical production); Cloudflare Workers Static Assets (production mirror and development preview)
 
 ## 6. Authentication Contract
 
